@@ -1,2 +1,2 @@
-# SpringBoot
+# Spring
 study
