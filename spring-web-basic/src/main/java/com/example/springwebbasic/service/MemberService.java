@@ -3,15 +3,24 @@ package com.example.springwebbasic.service;
 import com.example.springwebbasic.domain.Member;
 import com.example.springwebbasic.repository.MemberRepository;
 import com.example.springwebbasic.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
 import java.util.Optional;
 
+//@Service
 public class MemberService {
     private final MemberRepository memberRepository;
 
+    //@Autowired
+    /**
+     * 상위 @Component(@Service / @Controller / @Repository ) 등 컴포넌트를 사용해 스프링 빈 등록 방식
+     */
+
     public MemberService(MemberRepository memberRepository){
+
         this.memberRepository = memberRepository;
     }
     /**
