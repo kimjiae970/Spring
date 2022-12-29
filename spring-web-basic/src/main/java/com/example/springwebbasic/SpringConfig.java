@@ -1,23 +1,31 @@
 package com.example.springwebbasic;
 
-import com.example.springwebbasic.repository.JdbcMemberRepository;
-import com.example.springwebbasic.repository.JdbcTemplateMemberRepository;
-import com.example.springwebbasic.repository.MemberRepository;
-import com.example.springwebbasic.repository.MemoryMemberRepository;
+import com.example.springwebbasic.repository.*;
 import com.example.springwebbasic.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.sql.DataSource;
 
 //자바 코드로 직접 스프링 빈 등록하는 방법
 @Configuration
 public class SpringConfig {
 
-    private final DataSource dataSource;
+//    private final DataSource dataSource;
 
-    public SpringConfig(DataSource dataSource) {
-        this.dataSource = dataSource;
+//    public SpringConfig(DataSource dataSource) {
+//        this.dataSource = dataSource;
+//    }
+
+    @PersistenceContext
+    private EntityManager em;
+
+    @Autowired
+    public SpringConfig(EntityManager em) {
+        this.em = em;
     }
 
     @Bean
@@ -30,6 +38,7 @@ public class SpringConfig {
 
         //return new MemoryMemberRepository();
         //return new JdbcMemberRepository(dataSource);
-        return new JdbcTemplateMemberRepository(dataSource);
+        //return new JdbcTemplateMemberRepository(dataSource);
+        return new JpaMemberRepository(em);
     }
 }
