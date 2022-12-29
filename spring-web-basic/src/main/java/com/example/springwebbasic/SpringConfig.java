@@ -1,5 +1,6 @@
 package com.example.springwebbasic;
 
+import com.example.springwebbasic.aop.TimeTraceAop;
 import com.example.springwebbasic.repository.*;
 import com.example.springwebbasic.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,4 +48,5 @@ public class SpringConfig {
         //return new JdbcTemplateMemberRepository(dataSource);
         //return new JpaMemberRepository(em);
 //    }
+
 }

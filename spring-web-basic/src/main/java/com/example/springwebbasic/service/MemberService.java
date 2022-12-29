@@ -4,6 +4,7 @@ import com.example.springwebbasic.domain.Member;
 import com.example.springwebbasic.repository.MemberRepository;
 import com.example.springwebbasic.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,7 +34,7 @@ public class MemberService {
         validateDuplicateMember(member); // 중복 회원 검증
         memberRepository.save(member);
         return member.getId();
-    }
+        }
 
     private void validateDuplicateMember(Member member) {
 
